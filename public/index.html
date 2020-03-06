@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset='utf-8'/>
+    <title>Alonzo's Mood</title>
+    <link rel='stylesheet' type='text/css' href='face.css'/>
+  </head>
+
+  <body>
+    <div id='text'>
+      <h1>Alonzo Mood Calculator</h1>
+
+      <p>
+        Enter the change in the change in the stock price for the day as
+        a percentage in the field below.  For example, if the stock
+        price is down <code>1&pct;</code>, then enter <code>-1</code>.
+      </p>
+
+      <p id='controls'>
+        <label for='rate'>Stock Price Change (Percent):</label><br/>
+        <input 
+          type='number'
+          id='rate'
+          value='0'
+          title='Enter the percent change in stock price for the day.'
+        />
+
+        <button
+          class='set-rate' 
+          data-val='-10'
+          title='Set change to minimum.'
+        >
+          Min
+        </button>
+
+        <button 
+          class='set-rate'
+          data-val='10'
+          title='Set change to maximum.'
+        >
+          Max
+        </button>
+
+        <button 
+          class='set-rate'
+          data-val='0'
+          title='Reset change to zero.'
+        >
+          Reset
+        </button>
+      </p>
+    </div>
+
+    <div id='face'></div>
+
+    <script type='text/javascript' src='jquery-3.4.1.min.js'></script>
+    <script type='text/javascript' src='face.js'></script>
+  </body>
+</html>
+
