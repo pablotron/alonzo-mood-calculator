@@ -11,24 +11,60 @@
       <h1>Alonzo Mood Calculator</h1>
 
       <p>
-        Enter the change in the change in the stock price for the day as
-        a percentage in the field below.  For example, if the stock
-        price is down <code>1%</code>, then enter <code>-1</code>.
+        Calculate Alonzo's mood with pinpoint accuracy by leveraging the
+        latest synergy of advanced technology and cross-platform
+        initiatives.
       </p>
 
-      <p id='controls'>
-        <label for='rate'>Stock Price Change (Percent):</label><br/>
+      <div id='help' class='hidden'>
+        <p>
+          Enter the percent change in the ORCL stock price relative to
+          $<span id='base'>55.73</span> as numeric value in the field
+          below.
+        </p>
+
+        <p>
+          For example, if the stock price is down <code>1%</code>, then
+          enter <code>-1</code> in the field.
+        </p>
+
+        <p>
+          The default value of the field is the current value according to
+          Yahoo Finance.
+        </p>
+      </div>
+
+      <p>
+        <a
+          id='help-toggle'
+          href='#'
+          title='Toggle help visibility.'
+        >Show Help</a>
+      </p>
+
+      <p class='controls'>
         <input
           type='number'
           id='rate'
           value='0'
+          min='-100'
+          step='10'
+          placeholder='enter percent'
           title='Enter the percent change in stock price for the day.'
         />
 
         <button
           class='set-rate'
+          data-val='current'
+          title='Reset to current value.'
+        >
+          Reset
+        </button>
+
+        <button
+          class='set-rate'
           data-val='-10000'
-          title='Set change to minimum.'
+          title='Set to minimum.'
         >
           Min
         </button>
@@ -36,7 +72,7 @@
         <button
           class='set-rate'
           data-val='0'
-          title='Set change to zero.'
+          title='Set to zero.'
         >
           Clear
         </button>
@@ -44,17 +80,9 @@
         <button
           class='set-rate'
           data-val='10000'
-          title='Set change to maximum.'
+          title='Set to maximum.'
         >
           Max
-        </button>
-
-        <button
-          class='set-rate'
-          data-val='current'
-          title='Set to today&apos; price.'
-        >
-          Current
         </button>
       </p>
     </div>

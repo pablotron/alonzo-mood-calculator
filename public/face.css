@@ -4,6 +4,10 @@ body {
   font-family: arial, verdana, helvetica, sans-serif;
 }
 
+#help-toggle {
+  color: #ddd;
+}
+
 #text {
   width: 50%;
   margin: 20px auto 20px auto;
@@ -17,7 +21,7 @@ body {
   width: 6em;
 }
 
-#controls {
+.controls {
   zoom: 200%;
 }
 
@@ -25,4 +29,8 @@ body {
   background-image: url(face.png);
   margin: 10px auto 10px auto;
   zoom: 800%;
+}
+
+.hidden {
+  display: none;
 }

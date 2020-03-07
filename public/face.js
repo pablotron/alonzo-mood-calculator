@@ -3,7 +3,11 @@ jQuery(function($) {
 
   // default base price
   var BASE_PRICE = 55.73;
+
+  // current price (fetched below from current.json)
   var CURRENT = 0;
+
+  // path to JSON data
   var DATA_URL = './current.json';
 
   /**
@@ -218,6 +222,21 @@ jQuery(function($) {
     return false;
   });
 
+  // set base price
+  $('#base').text(BASE_PRICE);
+
+  $('#help-toggle').click(function() {
+    // toggle help visibility
+    $('#help').toggleClass('hidden');
+
+    // update text
+    var text = $('#help').hasClass('hidden') ? 'Show Help' : 'Hide Help';
+    $(this).text(text);
+
+    // stop event
+    return false;
+  });
+
   // fetch current price as percent and populate #rate
   $.ajax({
     method: 'GET',
@@ -226,7 +245,10 @@ jQuery(function($) {
   }).fail(function(r) {
     alert("Couldn't fetch current data.");
   }).done(function(r) {
+    // cache current price
     CURRENT = to_percent(r.ask);
+
+    // update field
     $('#rate').val(CURRENT);
   });
 });
