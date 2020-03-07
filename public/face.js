@@ -186,7 +186,7 @@ jQuery(function($) {
     var val = $(this).data('val');
 
     // set value
-    $('#rate').val((val == 'current') ? current : val);
+    $('#rate').val((val == 'current') ? CURRENT : val);
 
     // stop event
     return false;
