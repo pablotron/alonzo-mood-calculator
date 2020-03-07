@@ -18,7 +18,7 @@
 
       <p id='controls'>
         <label for='rate'>Stock Price Change (Percent):</label><br/>
-        <input 
+        <input
           type='number'
           id='rate'
           value='0'
@@ -26,14 +26,22 @@
         />
 
         <button
-          class='set-rate' 
+          class='set-rate'
           data-val='-10'
           title='Set change to minimum.'
         >
           Min
         </button>
 
-        <button 
+        <button
+          class='set-rate'
+          data-val='0'
+          title='Set change to zero.'
+        >
+          Clear
+        </button>
+
+        <button
           class='set-rate'
           data-val='10'
           title='Set change to maximum.'
@@ -41,12 +49,12 @@
           Max
         </button>
 
-        <button 
+        <button
           class='set-rate'
-          data-val='0'
-          title='Reset change to zero.'
+          data-val='current'
+          title='Set to today&apos; price.'
         >
-          Reset
+          Current
         </button>
       </p>
     </div>

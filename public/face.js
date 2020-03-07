@@ -1,6 +1,14 @@
 jQuery(function($) {
   "use strict";
 
+  var BASE_PRICE = 55.73;
+  var CURRENT = 10;
+  var DATA_URL = './current.json';
+
+  function to_percent(ask) {
+    return Math.round((r.ask - BASE_PRICE) / BASE_PRICE * 10000) / 100.0;
+  }
+
   /**
    * get the current time, in milliseconds since the epoch.
    */
@@ -175,8 +183,24 @@ jQuery(function($) {
   $('#rate').keyup(tick).focus();
 
   $('.set-rate').click(function() {
-    $('#rate').val($(this).data('val'));
+    var val = $(this).data('val');
+
+    // set value
+    $('#rate').val((val == 'current') ? current : val);
+
+    // stop event
     return false;
+  });
+
+  $.ajax({
+    method: 'GET',
+    url: DATA_URL,
+    dataType: 'json'
+  }).fail(function(r) {
+    alert("Couldn't fetch current data.");
+  }).done(function(r) {
+    CURRENT = to_percent(r.ask);
+    $('#rate').val(CURRENT);
   });
 });
 
