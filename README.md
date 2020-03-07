@@ -14,6 +14,9 @@ Setup instructions (Debian):
     
     # set up cron job that calls bin/get-stock.py daily
     # example:
-    @daily bin/get-stock.py ORCL > public/current.json
+    @daily path/to/bin/get-stock.py ORCL > path/to/public/current.json
+
+    # another example (refresh 4 times a day)
+    0 */6 * * * path/to/bin/get-stock.py ORCL > path/to/public/current.json
 
     # symlink apache or whatever to public/ directory
