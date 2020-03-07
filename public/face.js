@@ -1,21 +1,35 @@
 jQuery(function($) {
   "use strict";
 
+  // default base price
   var BASE_PRICE = 55.73;
-  var CURRENT = 10;
+  var CURRENT = 0;
   var DATA_URL = './current.json';
 
+  /**
+   * Convert asking price to percentage of base price.
+   *
+   * Used to convert the current asking price to a percentage in the
+   * ajax request at the bottom of this file.
+   */
   function to_percent(ask) {
     return Math.round((ask - BASE_PRICE) / BASE_PRICE * 10000) / 100.0;
   }
 
   /**
-   * get the current time, in milliseconds since the epoch.
+   * Get the current time as milliseconds since the epoch.
+   *
+   * Used to find the current frame in tick() below.
    */
   function now() {
     return (new Date()).getTime();
   }
 
+  /**
+   * Convert sprite sheet position to rectangle.
+   *
+   * Used to generate FRAMES below.
+   */
   function to_rect(pos) {
     return {
       x: 14 + 26 * pos.x,
@@ -25,6 +39,11 @@ jQuery(function($) {
     };
   }
 
+  /**
+   * Convert frame parameters to hash of CSS directives.
+   *
+   * Used to generate FRAMES below.
+   */
   function to_css(rect) {
     return {
       width: rect.w + 'px',
@@ -35,6 +54,11 @@ jQuery(function($) {
     };
   }
 
+  /**
+   * Frame list.
+   *
+   * Note: map of time and rate to CSS.
+   */
   var FRAMES = [{
     // hurt0-c
     time: { min: 0, max: 250 },
@@ -153,22 +177,24 @@ jQuery(function($) {
     };
   });
 
+  /**
+   * get current frame based on time and rate.
+   */
   function get_frame(time, rate) {
     // time, modulo 1000
     var tm = time % 1000;
 
-    var frames = FRAMES.filter(function(row) {
+    return FRAMES.find(function(row) {
       return (
         (tm >= row.time.min) && (tm < row.time.max) &&
         (rate >= row.rate.min) && (rate < row.rate.max)
       );
-    });
-
-    return ((frames.length > 0) ? frames[0] : FRAMES[0]);
+    }) || FRAMES[0];
   }
 
-  // 14x13, 24x29
-
+  /**
+   * update animation.
+   */
   function tick() {
     var time = now(),
         rate = +$('#rate').val(),
@@ -192,6 +218,7 @@ jQuery(function($) {
     return false;
   });
 
+  // fetch current price as percent and populate #rate
   $.ajax({
     method: 'GET',
     url: DATA_URL,
@@ -203,4 +230,3 @@ jQuery(function($) {
     $('#rate').val(CURRENT);
   });
 });
-
