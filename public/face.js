@@ -38,112 +38,112 @@ jQuery(function($) {
   var FRAMES = [{
     // hurt0-c
     time: { min: 0, max: 250 },
-    rate: { min: -0.5, max: 1 },
+    rate: { min: -5, max: 5 },
     pos:  { x: 1, y: 0 },
   }, {
     // hurt0-r
     time: { min: 250, max: 500 },
-    rate: { min: -0.5, max: 1 },
+    rate: { min: -5, max: 5 },
     pos:  { x: 2, y: 0 },
   }, {
     // hurt0-c
     time: { min: 500, max: 750 },
-    rate: { min: -0.5, max: 1 },
+    rate: { min: -5, max: 5 },
     pos:  { x: 1, y: 0 },
   }, {
     // hurt0-l
     time: { min: 750, max: 1000 },
-    rate: { min: -0.5, max: 1 },
+    rate: { min: -5, max: 5 },
     pos:  { x: 0, y: 0 },
   }, {
     // hurt1-c
     time: { min: 0, max: 250 },
-    rate: { min: -2, max: -0.5 },
+    rate: { min: -15, max: -5 },
     pos:  { x: 1, y: 1 },
   }, {
     // hurt1-r
     time: { min: 250, max: 500 },
-    rate: { min: -2, max: -0.5 },
+    rate: { min: -15, max: -5 },
     pos:  { x: 2, y: 1 },
   }, {
     // hurt1-c
     time: { min: 500, max: 750 },
-    rate: { min: -2, max: -0.5 },
+    rate: { min: -15, max: -5 },
     pos:  { x: 1, y: 1 },
   }, {
     // hurt1-l
     time: { min: 750, max: 1000 },
-    rate: { min: -2, max: -0.5 },
+    rate: { min: -15, max: -5 },
     pos:  { x: 0, y: 1 },
   }, {
     // hurt2-c
     time: { min: 0, max: 250 },
-    rate: { min: -3, max: -2 },
+    rate: { min: -30, max: -15 },
     pos:  { x: 1, y: 2 },
   }, {
     // hurt2-r
     time: { min: 250, max: 500 },
-    rate: { min: -3, max: -2 },
+    rate: { min: -30, max: -15 },
     pos:  { x: 2, y: 2 },
   }, {
     // hurt2-c
     time: { min: 500, max: 750 },
-    rate: { min: -3, max: -2 },
+    rate: { min: -30, max: -15 },
     pos:  { x: 1, y: 2 },
   }, {
     // hurt2-l
     time: { min: 750, max: 1000 },
-    rate: { min: -3, max: -2 },
+    rate: { min: -30, max: -15 },
     pos:  { x: 0, y: 2 },
   }, {
     // hurt3-c
     time: { min: 0, max: 250 },
-    rate: { min: -4, max: -3 },
+    rate: { min: -50, max: -30 },
     rect: { x: 14 + 26 * 1, y: 14 + 31 * 3, w: 24, h: 29 },
   }, {
     // hurt3-r
     time: { min: 250, max: 500 },
-    rate: { min: -4, max: -3 },
+    rate: { min: -50, max: -30 },
     rect: { x: 14 + 26 * 2, y: 14 + 31 * 3, w: 24, h: 29 },
   }, {
     // hurt3-c
     time: { min: 500, max: 750 },
-    rate: { min: -4, max: -3 },
+    rate: { min: -50, max: -30 },
     rect: { x: 14 + 26 * 1, y: 14 + 31 * 3, w: 24, h: 29 },
   }, {
     // hurt3-l
     time: { min: 750, max: 1000 },
-    rate: { min: -4, max: -3 },
+    rate: { min: -50, max: -30 },
     rect: { x: 14 + 26 * 0, y: 14 + 31 * 3, w: 24, h: 29 },
   }, {
     // hurt4-c
     time: { min: 0, max: 250 },
-    rate: { min: -5, max: -4 },
+    rate: { min: -75, max: -50 },
     rect: { x: 14 + 26 * 1, y: 16 + 31 * 4, w: 24, h: 29 },
   }, {
     // hurt4-r
     time: { min: 250, max: 500 },
-    rate: { min: -5, max: -4 },
+    rate: { min: -75, max: -50 },
     rect: { x: 14 + 26 * 2, y: 16 + 31 * 4, w: 24, h: 29 },
   }, {
     // hurt4-c
     time: { min: 500, max: 750 },
-    rate: { min: -5, max: -4 },
+    rate: { min: -75, max: -50 },
     rect: { x: 14 + 26 * 1, y: 16 + 31 * 4, w: 24, h: 29 },
   }, {
     // hurt4-l
     time: { min: 750, max: 1000 },
-    rate: { min: -5, max: -4 },
+    rate: { min: -75, max: -50 },
     rect: { x: 14 + 26 * 0, y: 16 + 31 * 4, w: 24, h: 29 },
   }, {
     // dead
     time: { min: 0, max: 1001 },
-    rate: { min: -10000, max: -5 },
+    rate: { min: -10000, max: -75 },
     rect: { x: 14, y: 335, w: 24, h: 31 },
   }, {
     // invincible
     time: { min: 0, max: 1001 },
-    rate: { min: 1, max: 10000 },
+    rate: { min: 5, max: 10000 },
     rect: { x: 40, y: 335, w: 24, h: 29 },
   }].map(function(row) {
     return {
