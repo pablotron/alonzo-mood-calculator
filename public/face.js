@@ -238,13 +238,9 @@ jQuery(function($) {
   });
 
   // fetch current price as percent and populate #rate
-  $.ajax({
-    method: 'GET',
-    url: DATA_URL,
-    dataType: 'json',
-  }).fail(function(r) {
-    alert("Couldn't fetch current data.");
-  }).done(function(r) {
+  fetch(DATA_URL).then(function(r) {
+    return r.json();
+  }).then(function(r) {
     // cache current price
     CURRENT = to_percent(r.ask);
 
