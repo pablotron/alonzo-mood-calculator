@@ -195,7 +195,7 @@ jQuery(function($) {
     $('#face').css(get_frame(
       (new Date()).getTime(),
       +$('#rate').val()
-    ));
+    ).css);
   }
 
   setInterval(tick, 250);
