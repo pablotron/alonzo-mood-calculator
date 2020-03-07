@@ -6,7 +6,7 @@ jQuery(function($) {
   var DATA_URL = './current.json';
 
   function to_percent(ask) {
-    return Math.round((r.ask - BASE_PRICE) / BASE_PRICE * 10000) / 100.0;
+    return Math.round((ask - BASE_PRICE) / BASE_PRICE * 10000) / 100.0;
   }
 
   /**
@@ -195,7 +195,7 @@ jQuery(function($) {
   $.ajax({
     method: 'GET',
     url: DATA_URL,
-    dataType: 'json'
+    dataType: 'json',
   }).fail(function(r) {
     alert("Couldn't fetch current data.");
   }).done(function(r) {
