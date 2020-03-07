@@ -21,15 +21,6 @@ jQuery(function($) {
   }
 
   /**
-   * Get the current time as milliseconds since the epoch.
-   *
-   * Used to find the current frame in tick() below.
-   */
-  function now() {
-    return (new Date()).getTime();
-  }
-
-  /**
    * Convert sprite sheet position to rectangle.
    *
    * Used to generate FRAMES below.
@@ -65,121 +56,125 @@ jQuery(function($) {
    */
   var FRAMES = [{
     // hurt0-c
-    time: { min: 0, max: 250 },
-    rate: { min: -5, max: 5 },
-    pos:  { x: 1, y: 0 },
+    t: [0, 250],
+    p: [-5, 5],
+    pos: { x: 1, y: 0 },
   }, {
     // hurt0-r
-    time: { min: 250, max: 500 },
-    rate: { min: -5, max: 5 },
-    pos:  { x: 2, y: 0 },
+    t: [250, 500],
+    p: [-5, 5],
+    pos: { x: 2, y: 0 },
   }, {
     // hurt0-c
-    time: { min: 500, max: 750 },
-    rate: { min: -5, max: 5 },
+    t: [500, 750],
+    p: [-5, 5],
     pos:  { x: 1, y: 0 },
   }, {
     // hurt0-l
-    time: { min: 750, max: 1000 },
-    rate: { min: -5, max: 5 },
+    t: [750, 1000],
+    p: [-5, 5],
     pos:  { x: 0, y: 0 },
   }, {
     // hurt1-c
-    time: { min: 0, max: 250 },
-    rate: { min: -15, max: -5 },
+    t: [0, 250],
+    p: [-15, -5],
     pos:  { x: 1, y: 1 },
   }, {
     // hurt1-r
-    time: { min: 250, max: 500 },
-    rate: { min: -15, max: -5 },
+    t: [250, 500],
+    p: [-15, -5},
     pos:  { x: 2, y: 1 },
   }, {
     // hurt1-c
-    time: { min: 500, max: 750 },
-    rate: { min: -15, max: -5 },
+    t: [500, 750],
+    p: [-15, -5],
     pos:  { x: 1, y: 1 },
   }, {
     // hurt1-l
-    time: { min: 750, max: 1000 },
-    rate: { min: -15, max: -5 },
+    t: [750, 1000],
+    p: [-15, -5],
     pos:  { x: 0, y: 1 },
   }, {
     // hurt2-c
-    time: { min: 0, max: 250 },
-    rate: { min: -30, max: -15 },
+    t: [0, 250],
+    p: [-30, -15],
     pos:  { x: 1, y: 2 },
   }, {
     // hurt2-r
-    time: { min: 250, max: 500 },
-    rate: { min: -30, max: -15 },
+    t: [250, 500],
+    p: [-30, -15],
     pos:  { x: 2, y: 2 },
   }, {
     // hurt2-c
-    time: { min: 500, max: 750 },
-    rate: { min: -30, max: -15 },
+    t: [500, 750],
+    p: [-30, -15],
     pos:  { x: 1, y: 2 },
   }, {
     // hurt2-l
-    time: { min: 750, max: 1000 },
-    rate: { min: -30, max: -15 },
+    t: [750, 1000],
+    p: [-30, -15],
     pos:  { x: 0, y: 2 },
   }, {
     // hurt3-c
-    time: { min: 0, max: 250 },
-    rate: { min: -50, max: -30 },
+    t: [0, 250],
+    p: [-50, -30],
     rect: { x: 14 + 26 * 1, y: 14 + 31 * 3, w: 24, h: 29 },
   }, {
     // hurt3-r
-    time: { min: 250, max: 500 },
-    rate: { min: -50, max: -30 },
+    t: [250, 500],
+    p: [-50, -30],
     rect: { x: 14 + 26 * 2, y: 14 + 31 * 3, w: 24, h: 29 },
   }, {
     // hurt3-c
-    time: { min: 500, max: 750 },
-    rate: { min: -50, max: -30 },
+    t: [500, 750],
+    p: [-50, -30],
     rect: { x: 14 + 26 * 1, y: 14 + 31 * 3, w: 24, h: 29 },
   }, {
     // hurt3-l
-    time: { min: 750, max: 1000 },
-    rate: { min: -50, max: -30 },
+    t: [750, 1000],
+    p: [-50, -30 ],
     rect: { x: 14 + 26 * 0, y: 14 + 31 * 3, w: 24, h: 29 },
   }, {
     // hurt4-c
-    time: { min: 0, max: 250 },
-    rate: { min: -75, max: -50 },
+    t: [0, 250],
+    p: [-75, max],
     rect: { x: 14 + 26 * 1, y: 16 + 31 * 4, w: 24, h: 29 },
   }, {
     // hurt4-r
-    time: { min: 250, max: 500 },
-    rate: { min: -75, max: -50 },
+    t: [250, 500],
+    p: [-75, -50],
     rect: { x: 14 + 26 * 2, y: 16 + 31 * 4, w: 24, h: 29 },
   }, {
     // hurt4-c
-    time: { min: 500, max: 750 },
-    rate: { min: -75, max: -50 },
+    t: [500, 750],
+    p: [-75, -50],
     rect: { x: 14 + 26 * 1, y: 16 + 31 * 4, w: 24, h: 29 },
   }, {
     // hurt4-l
-    time: { min: 750, max: 1000 },
-    rate: { min: -75, max: -50 },
+    t: [750, 1000],
+    p: [-75, -50],
     rect: { x: 14 + 26 * 0, y: 16 + 31 * 4, w: 24, h: 29 },
   }, {
     // dead
-    time: { min: 0, max: 1001 },
-    rate: { min: -10000, max: -75 },
+    t: [0, 1001],
+    p: [-10000, -75
     rect: { x: 14, y: 335, w: 24, h: 31 },
   }, {
     // invincible
-    time: { min: 0, max: 1001 },
-    rate: { min: 5, max: 10000 },
+    t: [0, 1001],
+    p: [5, 10000],
     rect: { x: 40, y: 335, w: 24, h: 29 },
   }].map(function(row) {
     return {
-      time: row.time,
-      rate: row.rate,
+      t: row.t,
+      p: row.p,
       css: to_css(row.rect ? row.rect : to_rect(row.pos)),
     };
   });
+
+  function in_range(v, row) {
+    return (v >= row[0]) && (v < row[1]);
+  }
 
   /**
    * get current frame based on time and rate.
@@ -189,10 +184,7 @@ jQuery(function($) {
     var tm = time % 1000;
 
     return FRAMES.find(function(row) {
-      return (
-        (tm >= row.time.min) && (tm < row.time.max) &&
-        (rate >= row.rate.min) && (rate < row.rate.max)
-      );
+      return in_range(tm, row.t) && in_range(rate, row.p);
     }) || FRAMES[0];
   }
 
@@ -200,13 +192,10 @@ jQuery(function($) {
    * update animation.
    */
   function tick() {
-    var time = now(),
-        rate = +$('#rate').val(),
-        frame = get_frame(time, rate);
-    // console.log({time: time % 1000, rect: rect});
-
-    // update #face
-    $('#face').css(frame.css);
+    $('#face').css(get_frame(
+      (new Date()).getTime(),
+      +$('#rate').val()
+    ));
   }
 
   setInterval(tick, 250);
