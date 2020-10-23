@@ -194,7 +194,7 @@ jQuery(function($) {
   function tick() {
     $('#face').css(get_frame(
       (new Date()).getTime(),
-      +$('#rate').val()
+      ($('#wednesday-mode').is(':checked') ? -20 : +$('#rate').val())
     ).css);
   }
 
@@ -225,6 +225,18 @@ jQuery(function($) {
     // stop event
     return false;
   });
+
+  $('#wednesday-mode').click(function() {
+    var me = $(this);
+    setTimeout(function() {
+      $('body').toggleClass('wednesday-mode', me.is(':checked'));
+    }, 10);
+  });
+
+  // toggle wednesday mode on wednesdays
+  if ((new Date()).getDay() == 3) {
+    $('#wednesday-mode').click();
+  }
 
   // fetch current price as percent and populate #rate
   fetch(DATA_URL).then(function(r) {

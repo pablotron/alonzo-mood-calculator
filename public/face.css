@@ -4,6 +4,18 @@ body {
   font-family: arial, verdana, helvetica, sans-serif;
 }
 
+body.wednesday-mode {
+  background: darkred;
+}
+
+body .wednesday-mode {
+  display: none;
+}
+
+body.wednesday-mode .wednesday-mode {
+  display: block;
+}
+
 #help-toggle {
   color: #ddd;
 }
